@@ -43,7 +43,7 @@ In this sample, plug sensors as below.
 - LED: Red LED and two onboard Green LEDs
 
 #### Input: Switch
-- Touch sensor: When you touch the sensor, it lights up LED and get data from sensors.
+- Touch sensor: When you touch the sensor, it lights up LEDs and get data from sensors.
 - Button: When you push the button, it lights up LEDs and get data from sensors.
 - Tilt Module: When you tilt the module one way, it lights up LEDs and get data from sensors.
 
