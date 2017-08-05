@@ -1,7 +1,7 @@
 # Dragon Board 410c Windows 10 IoT Core with 96 Board Starter Kit sample
 Dragon Board 410c Windows 10 IoT Core with 96 Board Starter Kit sample
 
-This repository contains sample UWP application for DragonBoard 410c and sensors with Linker Mezzanine card. Unlike other samples, this application connects many sensors listed below to demonstrate how to utilize multiple sensors.
+This repository contains sample UWP application for DragonBoard 410c and sensors with Linker Mezzanine card. Unlike other samples, this application connects many sensors listed below to demonstrate how to utilize multiple sensors.　The application uses onboard LEDs and GPS.
 
 ### DragonBoard 410c 
 <img src="https://www.96boards.org/product/ce/dragonboard410c/images/DragonBoard-UpdatedImages-front.png" width="200">
@@ -50,6 +50,7 @@ In this sample, plug sensors as below.
 #### Input: Sensor
 - TPM36: Measure temperature
 - Photoresistor: Measuare the brightness
+- Onboard GPS: Measure location
 
 ## Lisence
 MIT
