@@ -2,6 +2,7 @@
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Core;
+using Windows.Devices.Geolocation;
 using Windows.Devices.Gpio;
 using Windows.Devices.Spi;
 using Windows.UI.Core;
@@ -172,6 +173,7 @@ namespace DragonBoard_96BoardStarterKit_Sample.ViewModels
         private async Task GetSensorValueAndUpdateUI(string sensorName, GpioPinValueChangedEventArgs e)
         {
             StringBuilder sb = new StringBuilder();
+            // When user touched, pushed or tiled, then lit the LED and display sensor data
             if (e.Edge == GpioPinEdge.RisingEdge)
             {
                 ledPinValue = GpioPinValue.High;
@@ -182,8 +184,11 @@ namespace DragonBoard_96BoardStarterKit_Sample.ViewModels
                 onboardLedPin2.Write(onboardLedPin1Value);
                 sb.Append($"{sensorName} on");
 
+                var geoposition = await GetCurrentLocation();
                 sb.Append($"Temp: {GetTemperature()}");
                 sb.Append($"Lux: {GetLux()}");
+                sb.Append($"Latitude: {geoposition.Coordinate.Point.Position.Latitude}");
+                sb.Append($"Longitude: {geoposition.Coordinate.Point.Position.Longitude}");
             }
             else if (e.Edge == GpioPinEdge.FallingEdge)
             {
@@ -232,7 +237,17 @@ namespace DragonBoard_96BoardStarterKit_Sample.ViewModels
             value |= (luxReadBuf[2] & 0xff);
             return value;
         }
-        
+
+        /// <summary>
+        /// Get Location from onboard GPS
+        /// </summary>
+        /// <returns></returns>
+        private async Task<Geoposition> GetCurrentLocation()
+        {
+            var geolocator = new Geolocator();
+            return await geolocator.GetGeopositionAsync();
+        }
+
         #endregion
 
         #endregion
